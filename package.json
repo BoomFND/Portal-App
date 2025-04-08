@@ -1,0 +1,21 @@
+{
+  "name": "website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:staging": "vite --mode=staging",
+    "dev:prod": "vite --mode=production",
+    "build": "vite build",
+    "build:staging": "vite build --mode=staging",
+    "preview": "vite preview",
+    "clean": "rm -rf node_modules"
+  },
+  "devDependencies": {
+    "vite": "^5.1.4"
+  },
+  "dependencies": {
+    "gsap": "^3.12.4"
+  }
+}
