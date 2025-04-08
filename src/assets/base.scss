@@ -1,0 +1,73 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --bg-color: #0f1012;
+  --color-text: #fff;
+}
+
+/* semantic color variables for this project */
+:root {
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
+}
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('./fonts/Urbanist-Bold.ttf') format('truetype');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+body {
+  color: var(--color-text);
+  background: var(--bg-color);
+  transition: color 0.5s;
+  line-height: 1.6;
+  font-family: Urbanist;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 1.198vw;
+  background: #fff;
+  gap: 0.521vw;
+
+  &__text {
+    color: #0f1012;
+    text-align: center;
+    font-family: Urbanist;
+    font-size: 0.833vw;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 0.625vw; /* 75% */
+    text-transform: capitalize;
+  }
+
+  &:hover {
+    border-radius: 1.25vw;
+    background: #fff;
+    box-shadow: 0px 0px 0.417vw 0px rgba(255, 255, 255, 0.8);
+  }
+}
