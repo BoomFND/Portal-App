@@ -65,10 +65,10 @@ const meetAnimation = () => {
 }
 
 const goToGamerFun = () => {
-  return
+  // return
   // prod:https://pump.gamerboom.org/
   // uat:https://testing-fun.gamerboom.org/
-  window.open(import.meta.env.VITE_APP_GAMER_FUN_URL, '_black')
+  window.open('https://x.com/GhostAI_G', '_black')
 }
 
 const isHover = ref(false)
@@ -114,8 +114,7 @@ onMounted(() => {
     <div class="container">
       <div class="content-block">
         <div class="desc">
-          Discover the Entry Portal, claim <span>Crypto Rewards</span> in your gaming journey. Build
-          and own your Gaming AI Agents, no coding needed!
+          Dive into the Entry Portal, grab rewards on your gaming adventure! Craft and own your<span> AI Gaming Agents</span>, and get started by following the Ghost Girl!
         </div>
         <div
           class="button"
@@ -125,11 +124,11 @@ onMounted(() => {
           @mouseleave="isHover = false"
         >
           <template v-if="!isHover">
-            <SvgIcon name="agent" />
-            <div class="text">Create your Agent</div>
+            <!-- <SvgIcon name="agent" /> -->
+            <div class="text">Know More</div>
           </template>
           <template v-else>
-            <div class="text">Coming Soon</div>
+            <div class="text">Know More</div>
           </template>
         </div>
       </div>
