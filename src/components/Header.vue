@@ -1,9 +1,14 @@
 <script lang="ts" setup>
 import { gsap } from 'gsap'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref,defineProps } from 'vue'
 
 const isDrawerOpen = ref(false)
-
+const props = defineProps({
+  headerStyle: {
+    type: Object,
+    default: () => ({})
+  }
+})
 const toggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value
   if (isDrawerOpen.value) {
@@ -77,7 +82,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="navgation w-nav">
+  <div class="navgation w-nav" :style="headerStyle">
     <div class="navigation-container">
       <a class="brand w-nav-brand">
         <SvgIcon name="logo" />
