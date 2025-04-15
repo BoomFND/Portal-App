@@ -1,21 +1,22 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-interface Props {
-  prefix?: string
-  name: string
-  color?: string
-}
 
-const props = withDefaults(defineProps<Props>(), {
-  prefix: 'icon',
-  color: '#1D1D1F',
+const props = defineProps({
+  name: {
+    type: String,
+    required: true
+  },
+  color: {
+    type: String,
+    default: ''
+  }
 })
 
-const symbolId = computed(() => `#${props.prefix}-${props.name}`)
+const symbolId = computed(() => `#icon-${props.name}`)
 </script>
 
 <template>
-  <svg class="svg-icon" aria-hidden="true">
+  <svg aria-hidden="true" class="svg-icon">
     <use :xlink:href="symbolId" :fill="color" />
   </svg>
 </template>
@@ -24,7 +25,8 @@ const symbolId = computed(() => `#${props.prefix}-${props.name}`)
 .svg-icon {
   width: 1em;
   height: 1em;
-  vertical-align: middle;
-  color: currentColor;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 </style>
