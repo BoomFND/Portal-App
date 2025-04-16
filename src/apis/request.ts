@@ -1,8 +1,7 @@
 import axios, { AxiosError, type AxiosRequestConfig } from 'axios'
 
 // baseURL
-const apiOrigin = 'https://api.gamerboom.org'
-
+const apiOrigin =import.meta.env.VITE_APP_API_PREFIX as string
 /**
  * @param options options
  * @returns
