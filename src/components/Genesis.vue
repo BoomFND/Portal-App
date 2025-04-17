@@ -16,12 +16,7 @@ const formatNumber = (value: number) => {
 }
 
 const featContentAnimation = () => {
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.meeting-wrapper',
-      start: 'bottom top+=72px',
-    },
-  })
+  const tl = gsap.timeline()
 
   tl.from('.genesis-wrapper .feature-content .title', {
     opacity: 0,
@@ -47,20 +42,13 @@ const featContentAnimation = () => {
         y: 72,
         duration: 0.7,
         ease: 'circ.out',
-        onComplete() {
-          tl.kill()
-        },
       },
       '<=0.8',
     )
 }
 const featBlockAnimation = () => {
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.feature-content .title',
-      start: 'top top+=72px',
-    },
-  })
+  // 不再使用ScrollTrigger，直接在组件加载时执行动画
+  const tl = gsap.timeline()
 
   tl.from('.genesis-wrapper .feature-block .game-img-wrapper', {
     opacity: 0,
@@ -165,9 +153,6 @@ const featBlockAnimation = () => {
         y: 72,
         duration: 0.7,
         ease: 'circ.out',
-        onComplete() {
-          tl.kill()
-        },
       },
       '<=0.11',
     )
@@ -226,20 +211,15 @@ const getStatisticsData = async () => {
 }
 
 onMounted(() => {
+  // 直接执行动画，不依赖滚动触发
   featContentAnimation()
   featBlockAnimation()
-
-  // Use ScrollTrigger to start fetching data when the title is in view
-  ScrollTrigger.create({
-    trigger: '.genesis-wrapper .feature-content .title',
-    start: 'top center',
-    onEnter: () => {
-      getStatisticsData()
-      // Set an interval to update the statistics every 10 seconds
-      setInterval(getStatisticsData, 10000)
-    },
-    once: true, // Ensure it only triggers once
-  })
+  
+  // 立即获取统计数据，不使用ScrollTrigger
+  getStatisticsData()
+  
+  // 设置定时更新
+  setInterval(getStatisticsData, 10000)
 })
 </script>
 
