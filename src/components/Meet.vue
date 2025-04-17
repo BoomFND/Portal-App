@@ -110,7 +110,7 @@ onMounted(() => {
 
 <template>
   <section class="meeting-wrapper">
-    <div class="title">Entry Portal & Boom FUN: <br />Where Gaming Meets Web3.0</div>
+    <div class="title">Entry Portal & AI Agents: <br />Where Gaming Meets AI</div>
     <div class="container">
       <div class="content-block">
         <div class="desc">

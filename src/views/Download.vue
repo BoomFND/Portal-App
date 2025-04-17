@@ -1,10 +1,11 @@
 <template>
-  <Header :headerStyle="{ backgroundColor: 'transparent', backdropFilter: 'none' }" />
-  <div class="background-wrapper"></div>
+  <Header/>
   <div class="download-page">
     <!-- Main content section (with background image) -->
     <div class="hero-section">
-      <h1 class="main-title">A Portal Empowering<br />Real Gamers</h1>
+      <div class="title-background-area">
+        <h1 class="main-title">A Portal Empowering<br />Real Gamers</h1>
+      </div>
       <div class="button-container">
         <button class="download-btn" @click="handleDownload">
           <svg-icon name="windows" />
@@ -97,7 +98,7 @@
   </div>
 
   <Footer />
-</template>
+</template> 
 
 <script setup lang="ts">
 import SvgIcon from "../components/SvgIcon.vue";
@@ -187,46 +188,52 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-.background-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 600px;
-  background-image: url("@/assets/images/downBg.png");
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  z-index: -1;
-}
-
-.download-page {
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 120px;
-  color: #1d1d1f;
-  font-family: "Urbanist", sans-serif;
-  position: relative;
-}
-
 /* Main title section */
 .hero-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 3rem 0 6rem;
-  position: relative;
   z-index: 1;
+  padding-top: 144px; /* 216px (target) - 72px (header) */
+  padding-bottom: 6rem; /* Keep existing bottom padding or adjust as needed */
+  color: #1d1d1f;
+  font-family: "Urbanist", sans-serif;
+  position: relative;
+  background-image: url("@/assets/images/downBg.png");
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 .main-title {
   font-size: 4.5rem;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin: 0 0 2rem; 
   line-height: 1.2;
   color: #1d1d1f;
   text-align: center;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  position: relative; /* Ensure pseudo-element is positioned relative to this */
+  background: none; 
+  z-index: 1; /* Ensure text is above the pseudo-element */
+  
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180%; /* Adjust width for desired spread */
+    height: 120%; /* Adjust height for desired spread */
+    background: radial-gradient(ellipse at center, rgba(250, 250, 252, 1) 0%, rgba(250, 250, 252, 0.5) 50%, rgba(250, 250, 252, 0) 70%);
+    z-index: -1; /* Place behind the text */
+    filter: blur(35px);
+    pointer-events: none;
+    border-radius: 50% / 40%; /* Adjust vertical radius for ellipse shape */
+    display: block; /* Ensure it's displayed */
+  }
 }
 
 .button-container {
@@ -251,7 +258,7 @@ onMounted(() => {
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   transition: all 0.3s ease;
   position: relative;
   z-index: 2;
@@ -296,18 +303,29 @@ onMounted(() => {
   z-index: 2;
   min-width: 230px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #BFBFBF;
 }
 
-/* Play Now & Earn section */
+
 .play-earn-section {
   width: 100%;
   text-align: center;
-  background: #ffffff;
   padding: 1.5rem;
-  box-shadow: 0px 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+  padding-top: 3rem;
   position: relative;
   z-index: 1;
-  border-radius: 1rem;
+  background-color: #fafafc;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(250, 250, 252, 0.9) 80%, rgba(250, 250, 252, 1) 100%);
+    z-index: -1;
+  }
 }
 
 .section-title {
@@ -332,7 +350,7 @@ onMounted(() => {
 
 .steps-container {
   flex: 1;
-  max-width: 35rem;
+  // max-width: 35rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -433,18 +451,12 @@ onMounted(() => {
   }
 }
 
-/* Responsive design */
 @media screen and (max-width: 1024px) {
-  .download-page {
-    padding-top: 100px;
-  }
-  
-  .background-wrapper {
-    height: 500px;
-  }
-  
   .main-title {
-    font-size: 2.5rem;
+    font-size: 72px;
+    line-height: 1.2; /* 120% */
+    font-weight: 800; /* ExtraBold */
+    color: #1D1D1F;
   }
 
   .image-container .right .pc {
@@ -466,29 +478,108 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 834px) {
+  :root {
+    font-size: calc(100vw / 834 * 10.75);
+  }
   .download-page {
-    padding-top: 80px;
-  }
-  
-  .background-wrapper {
-    height: 400px;
-  }
-  
-  .main-title {
-    font-size: 2rem;
-  }
-  
-  .section-title {
-    font-size: 1.5rem;
+    padding-top: 0px;
+    background-image: none;
+    position: relative;
   }
 
-  .content-wrapper {
-    padding: 1rem;
+  .hero-section {
+    position: relative;
+    padding: 0; 
+    background-image: none; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: visible; 
+    height: auto;
+    display: block;
+  }
+
+  .hero-section::before {
+    display: none;
   }
   
-  .steps-container {
-    max-width: 100%;
+  .title-background-area {
+    position: relative;
+    width: 100%;
+    height: 272px; 
+    background-image: url("@/assets/images/downBg.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    overflow: hidden; 
+    mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  }
+
+  .main-title {
+    font-size: 3.8rem;
+    line-height: 1.2;
+    margin: 0 20px; 
+    padding-top: 91px; 
+    position: relative; 
+    height: 154px; 
+    display: block;
+    font-weight: 800;
+    z-index: 1; 
+    background: none; 
+    width: auto; 
+    text-align: center;
+  }
+
+  .main-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180%; /* Adjust width for desired spread */
+    height: 120%; /* Adjust height for desired spread */
+    background: radial-gradient(ellipse at center, rgba(250, 250, 252, 1) 0%, rgba(250, 250, 252, 0.5) 50%, rgba(250, 250, 252, 0) 70%);
+    z-index: -1; /* Place behind the text */
+    filter: blur(35px);
+    pointer-events: none;
+    border-radius: 50% / 40%; /* Adjust vertical radius for ellipse shape */
+    display: block; /* Ensure it's displayed */
+  }
+
+  .button-container {
+    margin: 0px 0 30px; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; 
+    background-color: transparent; 
+  }
+
+
+  
+  .coming-soon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .coming-soon {
+      color: rgba(29, 29, 31, 0.5);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+  }
+}
+@media screen and (max-width: 627px) {
+  .main-title {
+    font-size: 32px;
+    line-height: 1.2; /* 120% */
+    font-weight: 800; /* ExtraBold */
+    color: #1D1D1F;
+  }
+  .content-wrapper {
+    flex-direction: column;
+    gap: 2rem;
   }
 }
 @media screen and (max-width: 375px) {
@@ -517,5 +608,22 @@ onMounted(() => {
     left: -12px;
     z-index: 1;
   }
+
+  .main-title {
+    font-size: 32px;
+    line-height: 1.2; /* 120% */
+    font-weight: 800; /* ExtraBold */
+    color: #1D1D1F;
+  }
+  
+}
+
+.download-page {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 72px; /* Account for fixed header */
+  color: #1d1d1f;
+  font-family: "Urbanist", sans-serif;
+  position: relative; 
 }
 </style>
