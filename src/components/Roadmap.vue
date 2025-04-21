@@ -187,14 +187,14 @@ const roadmapItems = ref([
   {
     time: 'Q2 2025',
     title: 'Mainnet Release <br /> & Growth',
-    icon: 'willing',
+    icon: 'sun',
     texts: [
       'Mainnet Testing and Release',
       'Supported Game Portfolio Expansion',
       'Agent Launchpad BoomFun Launch',
     ],
-    status: 'future',
-    isFutureClass: true, // 标记需要 'future' 类
+    status: 'finished',
+    // isFutureClass: true, // 标记需要 'future' 类
   },
   {
     time: 'Q3-Q4 2025',
