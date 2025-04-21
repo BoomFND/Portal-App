@@ -2,8 +2,11 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import posterUrl from '@/assets/images/poster.jpg'
+import { useRouter } from 'vue-router'
+
 gsap.registerPlugin(ScrollTrigger)
 
+const router = useRouter()
 const videoRef = ref<HTMLVideoElement>()
 const isPlaying = ref(true)
 const isMuted = ref(true)
@@ -85,10 +88,8 @@ const goToPerceptron = () => {
 }
 
 const goToAboutPerceptron = () => {
-  window.open(
-    'https://gamerboom.medium.com/perceptron-nft-the-key-to-ai-driven-gaming-innovation-540b75456ec6',
-    '_blank',
-  )
+  const route = router.resolve('/download')
+  window.open(route.href, '_blank')
 }
 
 const togglePlay = () => {
@@ -183,7 +184,7 @@ onMounted(() => {
           <div class="text">Perceptron Season</div>
         </div>
         <div class="link" @click="goToAboutPerceptron">
-          <div class="text">About Perceptron</div>
+          <div class="text">Download App</div>
           <SvgIcon name="forward" />
         </div>
       </div>
@@ -210,7 +211,7 @@ onMounted(() => {
         @playing="handlePlaying"
         :class="{ 'is-loaded': isLoaded }"
       >
-        <source src="https://cdn.gamerboom.org/gamerboom/video/hero.mp4" type="video/mp4" />
+        <source src="https://api.gamerboom.org/media/video/hero.mp4" type="video/mp4" />
       </video>
 
       <div v-if="isBuffering" class="buffering-indicator">
