@@ -32,7 +32,7 @@ const handleChange = (value: string | number) => {
       window.open('https://t.me/GamerBoom_Official')
       break
     case 'discord':
-      window.open('https://discord.com/invite/gamerboomofficial')
+      window.open('https://discord.gg/gamerboom-official')
       break
     case 'medium':
       window.open('https://medium.com/@gamerboom')
@@ -160,7 +160,7 @@ onMounted(() => {
                         <a class="nav-link" href="https://t.me/GamerBoom_Official" target="_blank">Telegram</a>
                       </div>
                       <div class="nav-item">
-                        <a class="nav-link" href="https://discord.com/invite/gamerboomofficial" target="_blank">Discord</a>
+                        <a class="nav-link" href="https://discord.gg/gamerboom-official" target="_blank">Discord</a>
                       </div>
                       <div class="nav-item">
                         <a class="nav-link" href="https://medium.com/@gamerboom" target="_blank">
