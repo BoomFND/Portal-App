@@ -72,7 +72,7 @@ onMounted(() => {
             <SvgIcon name="telegram" />
             Telegram
           </a>
-          <a class="footer-link" href="https://discord.com/invite/gamerboomofficial" target="_blank">
+          <a class="footer-link" href="https://discord.gg/gamerboom-official" target="_blank">
             <SvgIcon name="discord" />
             Discord
           </a>
