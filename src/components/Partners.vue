@@ -58,9 +58,9 @@ onMounted(() => {
         <div class="card">
           <SvgIcon name="partner-3" />
         </div>
-        <div class="card">
+        <!-- <div class="card">
           <SvgIcon name="partner-4" />
-        </div>
+        </div> -->
         <div class="card">
           <SvgIcon name="partner-5" />
         </div>
