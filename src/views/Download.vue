@@ -11,10 +11,17 @@
           <svg-icon name="windows" />
           <span>Download Desktop APP</span>
         </button>
-        <button class="coming-soon-btn" disabled>
-          <div class="coming-soon">GamerBoom 2.0 Coming Soon</div>
-        </button>
+        <div class="alpha-container">
+          <button class="coming-soon-btn" @click="handleDownClient">
+            <span>Download GamerBoom 2.0 Canary</span>
+          </button>
+        </div>
+        <div class="guide-link" @click="handleGuide">
+          <span>GamerBoom 2.0 Alpha Guide</span>
+          <svg-icon name="forward" />
+        </div>
       </div>
+  
     </div>
 
     <!-- Play Now & Earn section -->
@@ -106,7 +113,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { onMounted } from 'vue';
 import { useDownload } from '@/hooks/useDownload';
-
+import { getClient } from '@/apis/game'
 gsap.registerPlugin(ScrollTrigger);
 
 // Animation for the download page
@@ -182,6 +189,25 @@ const { donwload } = useDownload()
 const handleDownload = () => {
   donwload()
 }
+const handleDownClient = async() => {
+  try {
+    const res: any = await getClient()
+  if(res && res.url){
+   const a = document.createElement('a')
+    a.href = res.url
+    a.target = '_blank'
+    document.body.appendChild(a) // 添加到文档中以确保可以被点击
+    a.click()
+    document.body.removeChild(a) // 完成后移除
+  }
+  } catch (error) {
+    console.log(error)
+  } 
+}
+const handleGuide = () => { 
+  window.open('https://gamerboom.gitbook.io/gamerboom-whitepaper/canary-testing-guide', '_blank')
+
+}
 onMounted(() => {
   downloadAnimation();
 });
@@ -208,7 +234,7 @@ onMounted(() => {
 
 .main-title {
   font-size: 4.5rem;
-  font-weight: 700;
+  font-weight: 800;
   margin: 0 0 2rem; 
   line-height: 1.2;
   color: #1d1d1f;
@@ -218,7 +244,6 @@ onMounted(() => {
   background: none; 
   z-index: 1; /* Ensure text is above the pseudo-element */
   
-
   &::before {
     content: '';
     position: absolute;
@@ -253,12 +278,12 @@ onMounted(() => {
   background-color: #00bfa6;
   color: white;
   border: none;
-  padding: 0.75rem 1.75rem;
+  padding:14px 36.6px;
   border-radius: 2rem;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   transition: all 0.3s ease;
   position: relative;
   z-index: 2;
@@ -283,29 +308,70 @@ onMounted(() => {
   }
 }
 
+.alpha-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 278px;
+  padding-top: 32px;
+  margin-bottom: 16px;
+}
+
 .coming-soon-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #ffffff;
-  color: #bfbfbf;
-  border: none;
-  padding: 0.75rem 1.75rem;
+  background-color: transparent;
+  color: #1d1d1f;
+  border: 1.5px solid #000000;
+  padding: 12px 18px;
   border-radius: 2rem;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
-  margin-bottom: 1rem;
   transition: all 0.3s ease;
-  cursor: not-allowed;
   position: relative;
   z-index: 2;
-  min-width: 230px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #BFBFBF;
+  width: 100%;
+  
+  // &:hover {
+  //   transform: translateY(-2px);
+  //   box-shadow: 0 4px 8px #000000;
+  // }
+  
+  span {
+    white-space: nowrap;
+  }
 }
 
+.guide-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: #000000;
+  padding-bottom: 0.25rem;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 16px;
+  span {
+    font-weight: 500;
+  }
+  
+  .svg-icon {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+  
+  &:hover {
+    color: #000000;
+    border-bottom-color: #000000;
+  }
+}
 
 .play-earn-section {
   width: 100%;
@@ -403,6 +469,34 @@ onMounted(() => {
   padding: 0.219rem 0.5rem;
   width: fit-content;
   align-items: center;
+}
+
+.alpha-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem 0 1.5rem;
+  gap: 0.5rem;
+}
+
+.alpha-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 80px;
+  border: 1.5px solid #8E44AD;
+  background-color: transparent;
+  color: #1d1d1f;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(142, 68, 173, 0.2);
+  }
 }
 
 .dot {
@@ -556,18 +650,18 @@ onMounted(() => {
     background-color: transparent; 
   }
 
-
+  .alpha-container {
+    max-width: 250px;
+    padding-top: 32px;
+  }
   
-  .coming-soon-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    .coming-soon {
-      color: rgba(29, 29, 31, 0.5);
-      font-weight: 500;
-      white-space: nowrap;
-    }
+  .download-btn, .coming-soon-btn {
+    font-size: 0.875rem;
+    padding: 0.625rem 1.5rem;
+  }
+  
+  .guide-link {
+    font-size: 0.7rem;
   }
 }
 @media screen and (max-width: 627px) {

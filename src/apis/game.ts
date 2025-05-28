@@ -5,3 +5,10 @@ export const getDownloadLink = () =>
     url: '/generic/user_download/',
     method: 'GET'
   })
+  export const getClient= () =>
+    request({
+      url: '/generic/client/',
+      method: 'GET'
+    })
+  
+  

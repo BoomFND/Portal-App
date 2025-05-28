@@ -57,26 +57,26 @@ onMounted(() => {
         <div class="footer-col">
           <div class="text">Home</div>
           <a class="footer-link" @click="goToPerceptron">Perceptron</a>
-          <a class="footer-link" href="https://gamerboom.gitbook.io/gamerboom-whitepaper/" target="_blank">
+          <a class="footer-link" href="https://boomofficial.gitbook.io/boom-whitepaper" target="_blank">
             Docs
           </a>
           <a class="footer-link" href="#">Community</a>
         </div>
         <div class="footer-col">
           <div class="text">Social Media</div>
-          <a class="footer-link" href="https://x.com/Gamerboom_" target="_blank">
+          <a class="footer-link" href="https://x.com/BOOM_FND" target="_blank">
             <SvgIcon name="x" />
             Twitter
           </a>
-          <a class="footer-link" href="https://t.me/GamerBoom_Official" target="_blank">
+          <a class="footer-link" href="https://t.me/BoomCommunity_Official" target="_blank">
             <SvgIcon name="telegram" />
             Telegram
           </a>
-          <a class="footer-link" href="https://discord.gg/gamerboom-official" target="_blank">
+          <a class="footer-link" href="https://discord.com/invite/boom-official" target="_blank">
             <SvgIcon name="discord" />
             Discord
           </a>
-          <a class="footer-link" href="https://medium.com/@gamerboom" target="_blank">
+          <a class="footer-link" href="https://boomofficial.medium.com/" target="_blank">
             <SvgIcon name="medium" />
             Medium
           </a>
