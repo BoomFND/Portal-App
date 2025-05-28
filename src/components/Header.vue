@@ -1,9 +1,14 @@
 <script lang="ts" setup>
 import { gsap } from 'gsap'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref,defineProps } from 'vue'
 
 const isDrawerOpen = ref(false)
-
+const props = defineProps({
+  headerStyle: {
+    type: Object,
+    default: () => ({})
+  }
+})
 const toggleDrawer = () => {
   isDrawerOpen.value = !isDrawerOpen.value
   if (isDrawerOpen.value) {
@@ -21,16 +26,16 @@ const closeDrawer = () => {
 const handleChange = (value: string | number) => {
   switch (value) {
     case 'x':
-      window.open('https://x.com/Gamerboom_')
+      window.open('https://x.com/BOOM_FND')
       break
     case 'telegram':
-      window.open('https://t.me/GamerBoom_Official')
+      window.open('https://t.me/BoomCommunity_Official')
       break
     case 'discord':
-      window.open('https://discord.com/invite/gamerboom')
+      window.open('https://discord.com/invite/boom-official')
       break
     case 'medium':
-      window.open('https://medium.com/@gamerboom')
+      window.open('https://boomofficial.medium.com/')
       break
   }
 }
@@ -77,7 +82,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="navgation w-nav">
+  <div class="navgation w-nav" :style="headerStyle">
     <div class="navigation-container">
       <a class="brand w-nav-brand">
         <SvgIcon name="logo" />
@@ -88,7 +93,7 @@ onMounted(() => {
             <SvgIcon name="perception" />
             Perceptron
           </a>
-          <a href="https://gamerboom.gitbook.io/gamerboom-whitepaper/" target="_blank" class="nav-link">
+          <a href="https://boomofficial.gitbook.io/boom-whitepaper" target="_blank" class="nav-link">
             Docs
           </a>
           <a class="nav-link">
@@ -144,21 +149,21 @@ onMounted(() => {
                       </div>
 
                       <div class="nav-item">
-                        <a class="nav-link" href="https://gamerboom.gitbook.io/gamerboom-whitepaper/"  target="_blank">
+                        <a class="nav-link" href="https://boomofficial.gitbook.io/boom-whitepaper"  target="_blank">
                           Docs
                         </a>
                       </div>
                       <div class="nav-item">
-                        <a class="nav-link" href="https://x.com/Gamerboom_" target="_blank">X</a>
+                        <a class="nav-link" href="https://x.com/BOOM_FND" target="_blank">X</a>
                       </div>
                       <div class="nav-item">
-                        <a class="nav-link" href="https://t.me/GamerBoom_Official" target="_blank">Telegram</a>
+                        <a class="nav-link" href="https://t.me/BoomCommunity_Official" target="_blank">Telegram</a>
                       </div>
                       <div class="nav-item">
-                        <a class="nav-link" href="https://discord.com/invite/gamerboom" target="_blank">Discord</a>
+                        <a class="nav-link" href="https://discord.com/invite/boom-official" target="_blank">Discord</a>
                       </div>
                       <div class="nav-item">
-                        <a class="nav-link" href="https://medium.com/@gamerboom" target="_blank">
+                        <a class="nav-link" href="https://boomofficial.medium.com/" target="_blank">
                           Medium
                         </a>
                       </div>
